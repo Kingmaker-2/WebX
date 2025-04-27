@@ -1,0 +1,44 @@
+//https://workik.com/typescript-code-generator
+function add(a: number, b: number): number {
+    return a + b;
+}
+function subtract(a: number, b: number): number {
+    return a - b;
+}
+function multiply(a: number, b: number): number {
+    return a * b;
+}
+function divide(a: number, b: number): number | string {
+    if (b === 0) {
+        return "Cannot divide by zero";
+}
+    return a / b;
+}
+function performOperation(op: string, a: any, b: any): any {
+    switch (op) {
+        case "add":
+            return add(a, b);
+        case "subtract":
+            return subtract(a, b);
+        case "multiply":
+            return multiply(a, b);
+        case "divide":
+            return divide(a, b);
+        default:
+            return "Invalid operation";
+    }
+}
+function throwError(message: string): never {
+    throw new Error(message);
+    }
+let result: any;
+result = performOperation("add", 5, 3);
+
+console.log(`Addition Result: ${result}`);
+result = performOperation("divide", 10, 0);
+console.log(`Division Result: ${result}`);
+try {
+throwError("This is an error!");
+} catch (e) {
+console.log(e.message);
+}
